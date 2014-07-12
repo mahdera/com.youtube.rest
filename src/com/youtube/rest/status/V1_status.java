@@ -3,10 +3,12 @@
  */
 package com.youtube.rest.status;
 
-
+import java.sql.ResultSet;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import com.youtube.dao.MySQLConnection;
 
 /**
  * @author Mahder on macbook Pro
@@ -15,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/v1/status")
 public class V1_status {
-	private static final String api_version = "00.01.00";
+	private static final String api_version = "00.02.00";
 	
 	@GET
 	@Produces(MediaType.TEXT_HTML)
@@ -28,5 +30,24 @@ public class V1_status {
 	@Produces(MediaType.TEXT_HTML)
 	public String returnVersion(){
 		return "<p>Version: </p>" + api_version;
+	}
+	
+	@Path("/database")
+	@GET
+	@Produces("text/html")
+	public String returnDatabaseStatus(){
+		String statusTime = null;
+		try{
+			String query = "select * from tbl_advance where id = 1";
+			ResultSet rSet = MySQLConnection.readFromDatabase(query);
+			while(rSet.next()){
+				statusTime = rSet.getDate("modification_date").toString();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			MySQLConnection.disconnectDatabase();
+		}
+		return "<p>Database Status is : </p>" + statusTime;
 	}
 }//end class
