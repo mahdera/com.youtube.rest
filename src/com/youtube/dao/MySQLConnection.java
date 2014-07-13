@@ -85,6 +85,16 @@ public class MySQLConnection {
     		}
     }
     
+    public static ResultSet readFromDatabase(PreparedStatement preparedStatement){
+    		ResultSet rSet = null;
+    		try{
+    			rSet = preparedStatement.executeQuery();
+    		}catch(Exception e){
+    			e.printStackTrace();
+    		}
+    		return rSet;
+    }
+    
     public static PreparedStatement getPreparedStatement(String sqlString){
     		PreparedStatement preparedStatement = null;
     		try{
