@@ -16,7 +16,7 @@ import com.youtube.util.*;
  *
  */
 
-@Path("v1/inventory/")
+@Path("/v1/inventory/")
 public class V1_inventory {
 
 	@GET
@@ -27,7 +27,8 @@ public class V1_inventory {
 		
 		try{
 			String query = "select * from PC_PARTS";
-			ResultSet rSet = MySQLConnection.readFromDatabase(query);
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(query);
+			ResultSet rSet = MySQLConnection.readFromDatabase(pStmt);
 			ToJSON toJSONConvertor = new ToJSON();
 			JSONArray jsonArray = new JSONArray();
 			

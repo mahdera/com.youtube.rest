@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/polyfill.js"></script>
+	<script type="text/javascript" src="js/post.js"></script>
+</head>
+<body>
+	<form name="post_example" id="post_example">
+		<table border="0" width="50%">
+			<tr>
+				<td>Pc Part Title:</td>
+				<td>
+					<input type="text" name="pcPartsTitle" id="pcPartsTitle"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Pc Part Code:</td>
+				<td>
+					<input type="text" name="pcPartsCode" id="pcPartsCode"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Pc Part Maker:</td>
+				<td>
+					<input type="text" name="pcPartsMaker" id="pcPartsMaker"/>
+				</td>				
+			</tr>
+			<tr>
+				<td>Pc Part Available:</td>
+				<td>
+					<input type="text" name="pcPartsAvail" id="pcPartsAvail"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Pc Part Description:</td>
+				<td>
+					<input type="text" name="pcPartsDesc" id="pcPartsDesc"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="Post Using JACKSON" id="submit_it"/>
+				</td>
+				<td>
+					<input type="button" value="Post Using JSON Array Object" id="submit_it2"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div id="div_ajaxResponse"></div>
+</body>
+</html>

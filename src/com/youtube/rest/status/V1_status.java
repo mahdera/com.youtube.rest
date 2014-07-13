@@ -3,6 +3,7 @@
  */
 package com.youtube.rest.status;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.ws.rs.*;
@@ -38,8 +39,9 @@ public class V1_status {
 	public String returnDatabaseStatus(){
 		String statusTime = null;
 		try{
-			String query = "select * from tbl_advance where id = 1";
-			ResultSet rSet = MySQLConnection.readFromDatabase(query);
+			String query = "select * from tbl_advance where id = ?";
+			PreparedStatement pStmt = MySQLConnection.getPreparedStatement(query);
+			ResultSet rSet = MySQLConnection.readFromDatabase(pStmt);
 			while(rSet.next()){
 				statusTime = rSet.getDate("modification_date").toString();
 			}

@@ -28,14 +28,11 @@ public class MySQLConnection {
         }
     }
 
-    public static Connection getDatabaseConnection() throws Exception
-    {
+    public static Connection getDatabaseConnection() throws Exception{
         connect();
         Connection connection = getCon();
         return connection;
     }
-
-    
 
     public static void disconnectDatabase() {
         try {
@@ -46,37 +43,10 @@ public class MySQLConnection {
         } 
     }
 
-    public static ResultSet readFromDatabase(String query) {
-        try {
-            connect();
-            if(isConnected()){
-            		rSet = stmt.executeQuery(query);
-            }else{
-            		System.out.println("MySQL is not running!");
-            }
-        } catch (Exception sqle) {
-            sqle.printStackTrace();
-        } 
-        return rSet;
-    }
-
     public static boolean isConnected() {
         return connected;
     }
 
-    public static void writeToDatabase(String command) {
-        try {
-            connect();
-            if(isConnected()){
-            		int count = stmt.executeUpdate(command);
-            }else{
-            		System.out.println("MySQL is not running!");
-            }
-        } catch (Exception sqle) {
-            sqle.printStackTrace();
-        }
-    }
-    
     public static void writeToDatabase(PreparedStatement preparedStatement){
     		try{
     			preparedStatement.executeUpdate();
