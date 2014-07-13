@@ -10,7 +10,7 @@ public class MySQLConnection {
     private static Statement stmt;
     private static ResultSet rSet;
     private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/db_empadmin_sandford";
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:8889/db_REST";
     private static boolean connected;
 
     public MySQLConnection() {
